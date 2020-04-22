@@ -26,3 +26,7 @@ const logItems = function(items){
 
 logItems(numbers);
 logItems(names);
+
+
+
+logItems
