@@ -17,8 +17,9 @@
 
 
 const logItems = function(){
-    for( ){
-        
+    let total=0;
+    for(argument of arguments){
+        const total
     }
 }
 
