@@ -15,17 +15,15 @@
   
 //   logItems([5, 10, 15, 20, 25, 30, 35, 40, 45, 50]);
 
-const names=['Mango', 'Poly', 'Ajax', 'Lux', 'Jay', 'Kong'];
-const numbers = [1 ,2, 3, 4, 5, 6];
 
-const logItems = function(items){
-    for(const item of items){
-        console.log(item);
+const logItems = function(){
+    for( ){
+        
     }
 }
 
-logItems(numbers);
-logItems(names);
+logItems(['Mango', 'Poly', 'Ajax', 'Lux', 'Jay', 'Kong']);
+logItems([5, 10, 15, 20, 25, 30, 35, 40, 45, 50]);
 
 
 
