@@ -19,8 +19,10 @@
 const logItems = function(){
     let total=0;
     for(argument of arguments){
-        const total
+        total=+argument
     }
+    return total
+    console.log(total)
 }
 
 logItems(['Mango', 'Poly', 'Ajax', 'Lux', 'Jay', 'Kong']);
