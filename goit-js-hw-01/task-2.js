@@ -3,6 +3,6 @@ const ordered = 101;
 
 if (total >= ordered) {
   console.log(`Заказ оформлен, с вами свяжется менеджер`);
-} else if (total < ordered) {
+} else {
   console.log(`На складе недостаточно твоаров!`);
 }
