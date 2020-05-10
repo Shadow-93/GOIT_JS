@@ -1,12 +1,12 @@
 const countTotalSalary = function(employees) {
-  
   const values = Object.values(employees);
-  let total=0;
-  for (const value of values){
-    
-      total += value;
-  }return total
-    };
+  let total = 0;
+  // eslint-disable-next-line
+  for (const value of values) {
+    total += value;
+  }
+  return total;
+};
 
 /*
  * Вызовы функции для проверки работоспособности твоей реализации.

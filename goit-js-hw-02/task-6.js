@@ -9,14 +9,15 @@ do {
     break;
   }
   input = Number(input);
-  numbers.push(input);
   const testIsNan = Number.isNaN(input);
 
   if (testIsNan) {
     alert('Было введено не число, попробуйте еще раз');
     continue; // eslint-disable-line
   }
+  numbers.push(input);
 } while (true); // eslint-disable-line
+
 // eslint-disable-next-line
 for (let number of numbers) {
   number += input;

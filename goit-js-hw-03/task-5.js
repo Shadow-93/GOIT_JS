@@ -6,12 +6,14 @@ const products = [
 ];
 
 const getAllPropValues = function(arr, prop) {
-const items=[];
-for(const item of arr){
-    if(item[prop]!==undefined){
-        items.push(item[prop])
-    }}
-return items;
+  const items = [];
+  // eslint-disable-next-line
+  for (const item of arr) {
+    if (item[prop]) {
+      items.push(item[prop]);
+    }
+  }
+  return items;
 };
 
 /*

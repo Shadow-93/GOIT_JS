@@ -1,9 +1,12 @@
+// eslint-disable-next-line
 const findBestEmployee = function(employees) {
-    const entries = Object.entries(employees);
-    for(const entry of entries){
-    if(entry[1]===Math.max(...Object.values(employees))){
-    return entry[0]};
-}
+  const entries = Object.entries(employees);
+  // eslint-disable-next-line
+  for (const entry of entries) {
+    if (entry[1] === Math.max(...Object.values(employees))) {
+      return entry[0];
+    }
+  }
 };
 
 /*

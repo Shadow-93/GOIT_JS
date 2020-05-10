@@ -6,12 +6,14 @@ const products = [
 ];
 
 const calculateTotalPrice = function(allProdcuts, productName) {
-let total
-for(const product of allProdcuts){
-    if(product.name===productName){
-    total=product.price*product.quantity;}
+  let total;
+  // eslint-disable-next-line
+  for (const product of allProdcuts) {
+    if (product.name === productName) {
+      total = product.price * product.quantity;
     }
-return total;
+  }
+  return total;
 };
 
 /*

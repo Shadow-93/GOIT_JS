@@ -12,46 +12,49 @@ const account = {
   transactions: [],
 
   createTransaction(amount, type) {
-    this.transactions.push({amount: amount, type: type, id:tid+=1});
-    return this.transactions;
-    },
+    // eslint-disable-next-line
+    const addTransaction = { amount: amount, type: type, id: (tid += 1) };
+    return addTransaction;
+  },
 
   deposit(amount) {
-    this.balance+=amount;
-    this.createTransaction(amount, 'DEPOSIT');
+    this.balance += amount;
+    this.transactions.push(this.createTransaction(amount, Transaction.DEPOSIT));
   },
 
   withdraw(amount) {
-  if(this.balance<amount){
-  console.log ('Not enough balance')
-  return;}
-  this.balance-=amount;
-  this.createTransaction(amount, 'WITHDRAW');},
-
+    if (this.balance < amount) {
+      console.log('Not enough balance');
+      return;
+    }
+    this.balance -= amount;
+    this.transactions.push(this.createTransaction(amount, 'WITHDRAW'));
+  },
 
   getBalance() {
     return `Current balanse ${this.balance}`;
   },
 
-
   getTransactionDetails(id) {
-    for(const transaction of this.transactions){
-      if(transaction.id === id){
+    // eslint-disable-next-line
+    for (const transaction of this.transactions) {
+      if (transaction.id === id) {
         return transaction;
       }
     }
-    return "Wrong transaction ID.";
-    },
+    return 'Wrong transaction ID.';
+  },
 
   getTransactionTotal(type) {
-    let total=0
-    for(const transaction of this.transactions){
-      if(transaction.type===type){
-        total+=transaction.amount}
-        }
-        return `Balance ${total}`;
+    let total = 0;
+    // eslint-disable-next-line
+    for (const transaction of this.transactions) {
+      if (transaction.type === type) {
+        total += transaction.amount;
+      }
+    }
+    return `Balance ${total}`;
   },
-  
 };
 
 account.deposit(300);
