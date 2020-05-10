@@ -1,5 +1,3 @@
-// Исправь ошибки которые будут в консоли, чтобы скрипт заработал.
-
 const inventory = {
   items: ['Knife', 'Gas mask'],
   add(itemName) {
