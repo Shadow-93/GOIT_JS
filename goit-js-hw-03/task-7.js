@@ -12,7 +12,6 @@ const account = {
   transactions: [],
 
   createTransaction(amount, type) {
-    // eslint-disable-next-line
     const addTransaction = { amount: amount, type: type, id: (tid += 1) };
     return addTransaction;
   },
@@ -36,7 +35,6 @@ const account = {
   },
 
   getTransactionDetails(id) {
-    // eslint-disable-next-line
     for (const transaction of this.transactions) {
       if (transaction.id === id) {
         return transaction;
@@ -47,7 +45,6 @@ const account = {
 
   getTransactionTotal(type) {
     let total = 0;
-    // eslint-disable-next-line
     for (const transaction of this.transactions) {
       if (transaction.type === type) {
         total += transaction.amount;
