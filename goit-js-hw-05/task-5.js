@@ -1,5 +1,3 @@
-// Напиши класс Car с указанными свойствами и методами.
-
 class Car {
   static getSpecs({
     maxSpeed = 0,
@@ -10,22 +8,7 @@ class Car {
   }) {
     console.log({ maxSpeed, speed, isOn, distance, price });
   }
-  /*
-   * Добавь статический метод `getSpecs(car)`,
-   * который принимает объект-машину как параметр и выводит
-   * в консоль значения свойств maxSpeed, speed, isOn, distance и price.
-   */
 
-  /*
-   * Конструктор получает объект настроек.
-   *
-   * Добавь свойства будущеего экземпляра класса:
-   *  speed - текущая скорость, изначально 0
-   *  price - цена автомобиля
-   *  maxSpeed - максимальная скорость
-   *  isOn - заведен ли автомобиль, значения true или false. Изначально false
-   *  distance - общий киллометраж, изначально 0
-   */
   constructor({
     maxSpeed = 0,
     speed = 0,
@@ -40,10 +23,6 @@ class Car {
     this._price = price; // eslint-disable-line
   }
 
-  /*
-   * Добавь геттер и сеттер для свойства price,
-   * который будет работать с свойством цены автомобиля.
-   */
   get price() {
     return this._price; // eslint-disable-line
   }
@@ -52,20 +31,11 @@ class Car {
     this._price = newPrice; // eslint-disable-line
     return newPrice;
   }
-  /*
-   * Добавь код для того чтобы завести автомобиль
-   * Записывает в свойство isOn значение true
-   */
 
   turnOn() {
     this.isOn = true;
   }
 
-  /*
-   * Добавь код для того чтобы заглушить автомобиль
-   * Записывает в свойство isOn значение false,
-   * и сбрасывает текущую скорость в 0
-   */
   turnOff() {
     if (this.isOn === true) {
       this.isOn = false;
@@ -73,11 +43,6 @@ class Car {
     }
   }
 
-  /*
-   * Добавялет к свойству speed полученное значение,
-   * при условии что результирующая скорость
-   * не больше чем значение свойства maxSpeed
-   */
   accelerate(value) {
     if (this.speed + value <= this.maxSpeed) {
       this.speed += value;
@@ -86,21 +51,12 @@ class Car {
     this.speed = this.maxSpeed;
   }
 
-  /*
-   * Отнимает от свойства speed полученное значение,
-   * при условии что результирующая скорость не меньше нуля
-   */
   decelerate(value) {
     if (this.speed - value <= 0) {
       this.speed -= value;
     }
     this.speed = 0;
   }
-
-  /*
-   * Добавляет в поле distance киллометраж (hours * speed),
-   * но только в том случае если машина заведена!
-   */
 
   drive(hours) {
     if (this.isOn) {
