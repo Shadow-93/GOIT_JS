@@ -52,18 +52,15 @@ class Car {
   }
 
   decelerate(value) {
-    if (this.speed - value <= 0) {
+    if (this.speed - value !== 0) {
       this.speed -= value;
     }
-    this.speed = 0;
   }
 
   drive(hours) {
     if (this.isOn) {
-      this.distance = hours * this.speed;
-      return this.distance;
+      this.distance += hours * this.speed;
     }
-    this.distance = 0;
     return this.distance;
   }
 }
