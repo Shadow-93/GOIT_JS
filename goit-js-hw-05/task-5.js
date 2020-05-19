@@ -37,7 +37,7 @@ class Car {
   }
 
   turnOff() {
-    if (this.isOn === true) {
+    if (this.isOn) {
       this.isOn = false;
       this.speed = 0;
     }
@@ -52,7 +52,7 @@ class Car {
   }
 
   decelerate(value) {
-    if (this.speed - value !== 0) {
+    if (this.speed - value >= 0) {
       this.speed -= value;
     }
   }
