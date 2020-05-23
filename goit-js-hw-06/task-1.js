@@ -100,7 +100,6 @@ console.log('Task - 10');
 
 console.log(users);
 
-// Получить массив всех умений всех пользователей (поле skills), при этом не должно быть повторяющихся умений и они должны быть отсортированы в алфавитном порядке.
 // eslint-disable-next-line
 const getSortedUniqueSkills = users =>
   users
