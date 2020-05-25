@@ -22,8 +22,12 @@ console.log(getUsersWithEyeColor(users, 'blue')); // [объект Moore Hensley
 
 console.log('Task - 3');
 // eslint-disable-next-line
-const getUsersWithGender = (users, gender) =>
-  users.filter(user => user.gender === gender);
+const getUsersWithGender = (users, gender) => {
+  const arr = users
+    .filter(user => user.gender === gender)
+    .map(user => user.name);
+  return arr;
+};
 
 console.log(getUsersWithGender(users, 'male')); // [ 'Moore Hensley', 'Ross Vazquez', 'Carey Barr', 'Blackburn Dotson' ]
 
