@@ -8,14 +8,18 @@
 // обновление интерфейса
 
 const counterValue = document.querySelector('#value');
-counterValue.textContent = 0;
+counterValue.textContent = Number(0);
+console.log(counterValue.textContent);
 
-const buttonDecrementRef = document.querySelectorAll(
+const buttonDecrementRef = document.querySelector(
   'button[data-action="decrement"]'
-  );
-const buttonIncrementRef = document.querySelectorAll(
+);
+const buttonIncrementRef = document.querySelector(
   'button[data-action="increment"]'
-  );
+);
 
-buttonDecrementRef.addEventListener('clik', event => {
-    event.target})
+buttonDecrementRef.addEventListener('clik', increment);
+
+function increment(event) { 
+  counterValue.textContent -= 1;
+};
