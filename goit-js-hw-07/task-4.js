@@ -1,25 +1,24 @@
-// Счетчик состоит из спана и кнопок, которые должны увеличивать и уменьшать значение счетчика на 1.
-
-// Создай переменную counterValue в которой будет
-// хранится текущее значение счетчика.
-// Создай функции increment и decrement для увеличения
-// и уменьшения значения счетчика
-// Добавь слушатели кликов на кнопки, вызовы функций и
-// обновление интерфейса
-
-const counterValue = document.querySelector('#value');
-counterValue.textContent = Number(0);
-console.log(counterValue.textContent);
+const counterRef = document.querySelector('#value');
 
 const buttonDecrementRef = document.querySelector(
-  'button[data-action="decrement"]'
+  'button[data-action="decrement"]',
 );
+
 const buttonIncrementRef = document.querySelector(
-  'button[data-action="increment"]'
+  'button[data-action="increment"]',
 );
 
-buttonDecrementRef.addEventListener('clik', increment);
+let counterValue = Number(counterRef.textContent);
 
-function increment(event) { 
-  counterValue.textContent -= 1;
-};
+function decrement() {
+  counterValue -= 1;
+  counterRef.textContent = counterValue;
+}
+
+function increment() {
+  counterValue += 1;
+  counterRef.textContent = counterValue;
+}
+
+buttonDecrementRef.addEventListener('click', decrement);
+buttonIncrementRef.addEventListener('click', increment);
