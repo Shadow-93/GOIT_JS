@@ -1,0 +1,16 @@
+img {
+    width: 600px;
+    height: auto;
+}
+
+#gallery {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+#gallery.li {
+margin-bottom: 10px;
+}
