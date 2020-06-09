@@ -13,6 +13,7 @@
 // Создай функцию destroyBoxes(), которая очищает div#boxes.
 
 const boxesRef = document.querySelector('#boxes');
+const newBoxes = [];
 const newBox = document.createElement('div');
 newBox.style.width = '30px';
 newBox.style.height = '30px';
@@ -24,10 +25,10 @@ boxesRef.append(newBox);
 renderRef.addEventListener('click');
 destroyRef.addEventListener('click');
 
-function randColor() {
-  const r = Math.floor(Math.random() * 256);
-  const g = Math.floor(Math.random() * 256);
-  const b = Math.floor(Math.random() * 256);
-  const bgColor = `${r},${g},${b}`;
-  return bgColor;
-}
+// function randColor() {
+//   const r = Math.floor(Math.random() * 256);
+//   const g = Math.floor(Math.random() * 256);
+//   const b = Math.floor(Math.random() * 256);
+//   const bgColor = `${r},${g},${b}`;
+//   return bgColor;
+// }
