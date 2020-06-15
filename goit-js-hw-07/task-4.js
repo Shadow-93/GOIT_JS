@@ -8,7 +8,7 @@ const buttonIncrementRef = document.querySelector(
   'button[data-action="increment"]',
 );
 
-let counterValue = Number(counterRef.textContent);
+let counterValue = 0;
 
 function decrement() {
   counterValue -= 1;

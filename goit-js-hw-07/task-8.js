@@ -79,3 +79,5 @@ boxesRef.append(newBox);
 //   width = 30;
 //   height = 30;
 // });
+renderRef.addEventListener('click');
+destroyRef.addEventListener('click');
