@@ -8,16 +8,22 @@ const refs = {
   lightbox__content: document.querySelector('div.lightbox__content'),
 };
 
+console.dir(refs.lightbox__imageRef);
+console.dir(refs.galleryRef);
+
 let imageRef = '';
+let dataIndex = 0;
 
 gallery.forEach(image => {
   imageRef += `<li class=" gallery__item">
                 <a class="gallery__link">
-                <img class="gallery__image" 
+                <img class="gallery__image"
+                data-index = ${dataIndex} 
                     data-source="${image.original}"
                     src="${image.preview}" alt="${image.description}">
                 </a>
             </li>`;
+  dataIndex += 1;
 });
 
 refs.galleryRef.insertAdjacentHTML('beforeend', imageRef);
@@ -31,11 +37,12 @@ function onGalleryClick(event) {
   if (event.target.nodeName !== 'IMG') {
     return;
   }
-
+  window.addEventListener('keydown', slider);
   window.addEventListener(`keydown`, onEscape);
   refs.lightboxRef.classList.add('is-open');
   refs.lightbox__imageRef.src = event.target.dataset.source;
   refs.lightbox__imageRef.alt = event.target.alt;
+  refs.lightbox__imageRef.dataset.index = event.target.dataset.index;
 }
 
 function closeModal() {
@@ -53,5 +60,28 @@ function onClick(event) {
 function onEscape(event) {
   if (event.code === 'Escape') {
     closeModal();
+  }
+}
+
+function slider(event) {
+  if (event.code === 'ArrowLeft') {
+    if (Number(refs.lightbox__imageRef.dataset.index) >= 0) {
+      refs.lightbox__imageRef.dataset.index =
+        Number(refs.lightbox__imageRef.dataset.index) - 1;
+      if (Number(refs.lightbox__imageRef.dataset.index) < 0) {
+        refs.lightbox__imageRef.dataset.index =
+          refs.galleryRef.lastElementChild.children[0].children[0].dataset.index;
+        console.dir(refs.galleryRef.lastElementChild.children[0]);
+        refs.lightbox__imageRef.src =
+          gallery[Number(refs.lightbox__imageRef.dataset.index)].original;
+      }
+      refs.lightbox__imageRef.src =
+        gallery[Number(refs.lightbox__imageRef.dataset.index)].original;
+
+      //   console.log(refs.lightbox__imageRef.dataset.index);
+      //   refs.lightbox__imageRef.src = document.querySelector(
+      //     `img[data-index="${refs.lightbox__imageRef.dataset.index}"]`,
+      //   ).dataset.source;
+    }
   }
 }
