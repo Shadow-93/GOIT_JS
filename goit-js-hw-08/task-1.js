@@ -37,8 +37,8 @@ function onGalleryClick(event) {
   if (event.target.nodeName !== 'IMG') {
     return;
   }
-  window.addEventListener('keydown', slider);
-  window.addEventListener(`keydown`, onEscape);
+
+  window.addEventListener(`keydown`, onKeyPress);
   refs.lightboxRef.classList.add('is-open');
   refs.lightbox__imageRef.src = event.target.dataset.source;
   refs.lightbox__imageRef.alt = event.target.alt;
@@ -46,7 +46,7 @@ function onGalleryClick(event) {
 }
 
 function closeModal() {
-  window.removeEventListener(`keydown`, onEscape);
+  window.removeEventListener(`keydown`, onKeyPress);
   refs.lightboxRef.classList.remove('is-open');
   refs.lightbox__imageRef.src = '';
 }
@@ -57,13 +57,7 @@ function onClick(event) {
   }
 }
 
-function onEscape(event) {
-  if (event.code === 'Escape') {
-    closeModal();
-  }
-}
-
-function slider(event) {
+function onKeyPress(event) {
   if (event.code === 'ArrowLeft') {
     if (Number(refs.lightbox__imageRef.dataset.index) >= 0) {
       refs.lightbox__imageRef.dataset.index =
@@ -71,17 +65,31 @@ function slider(event) {
       if (Number(refs.lightbox__imageRef.dataset.index) < 0) {
         refs.lightbox__imageRef.dataset.index =
           refs.galleryRef.lastElementChild.children[0].children[0].dataset.index;
-        console.dir(refs.galleryRef.lastElementChild.children[0]);
         refs.lightbox__imageRef.src =
           gallery[Number(refs.lightbox__imageRef.dataset.index)].original;
       }
       refs.lightbox__imageRef.src =
         gallery[Number(refs.lightbox__imageRef.dataset.index)].original;
-
-      //   console.log(refs.lightbox__imageRef.dataset.index);
-      //   refs.lightbox__imageRef.src = document.querySelector(
-      //     `img[data-index="${refs.lightbox__imageRef.dataset.index}"]`,
-      //   ).dataset.source;
     }
+  }
+  if (event.code === 'ArrowRight') {
+    if (Number(refs.lightbox__imageRef.dataset.index) >= 0) {
+      refs.lightbox__imageRef.dataset.index =
+        Number(refs.lightbox__imageRef.dataset.index) + 1;
+      if (
+        Number(refs.lightbox__imageRef.dataset.index) >
+        refs.galleryRef.lastElementChild.children[0].children[0].dataset.index
+      ) {
+        refs.lightbox__imageRef.dataset.index =
+          refs.galleryRef.firstElementChild.children[0].children[0].dataset.index;
+        refs.lightbox__imageRef.src =
+          gallery[Number(refs.lightbox__imageRef.dataset.index)].original;
+      }
+      refs.lightbox__imageRef.src =
+        gallery[Number(refs.lightbox__imageRef.dataset.index)].original;
+    }
+  }
+  if (event.code === 'Escape') {
+    closeModal();
   }
 }
