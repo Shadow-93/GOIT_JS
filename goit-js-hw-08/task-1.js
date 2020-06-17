@@ -8,9 +8,6 @@ const refs = {
   lightbox__content: document.querySelector('div.lightbox__content'),
 };
 
-console.dir(refs.lightbox__imageRef);
-console.dir(refs.galleryRef);
-
 let imageRef = '';
 let dataIndex = 0;
 
