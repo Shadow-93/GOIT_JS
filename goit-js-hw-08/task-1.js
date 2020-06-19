@@ -54,37 +54,53 @@ function onClick(event) {
   }
 }
 
+function arrowRight() {
+  if (Number(refs.lightbox__imageRef.dataset.index) >= 0) {
+    refs.lightbox__imageRef.dataset.index =
+      Number(refs.lightbox__imageRef.dataset.index) + 1;
+    toStart();
+    refs.lightbox__imageRef.src =
+      gallery[Number(refs.lightbox__imageRef.dataset.index)].original;
+  }
+}
+
+function toStart() {
+  if (
+    Number(refs.lightbox__imageRef.dataset.index) >
+    refs.galleryRef.lastElementChild.children[0].children[0].dataset.index
+  ) {
+    refs.lightbox__imageRef.dataset.index =
+      refs.galleryRef.firstElementChild.children[0].children[0].dataset.index;
+    refs.lightbox__imageRef.src =
+      gallery[Number(refs.lightbox__imageRef.dataset.index)].original;
+  }
+}
+
+function arrowLeft() {
+  if (Number(refs.lightbox__imageRef.dataset.index) >= 0) {
+    refs.lightbox__imageRef.dataset.index =
+      Number(refs.lightbox__imageRef.dataset.index) - 1;
+    toEnd();
+    refs.lightbox__imageRef.src =
+      gallery[Number(refs.lightbox__imageRef.dataset.index)].original;
+  }
+}
+
+function toEnd() {
+  if (Number(refs.lightbox__imageRef.dataset.index) < 0) {
+    refs.lightbox__imageRef.dataset.index =
+      refs.galleryRef.lastElementChild.children[0].children[0].dataset.index;
+    refs.lightbox__imageRef.src =
+      gallery[Number(refs.lightbox__imageRef.dataset.index)].original;
+  }
+}
+
 function onKeyPress(event) {
   if (event.code === 'ArrowLeft') {
-    if (Number(refs.lightbox__imageRef.dataset.index) >= 0) {
-      refs.lightbox__imageRef.dataset.index =
-        Number(refs.lightbox__imageRef.dataset.index) - 1;
-      if (Number(refs.lightbox__imageRef.dataset.index) < 0) {
-        refs.lightbox__imageRef.dataset.index =
-          refs.galleryRef.lastElementChild.children[0].children[0].dataset.index;
-        refs.lightbox__imageRef.src =
-          gallery[Number(refs.lightbox__imageRef.dataset.index)].original;
-      }
-      refs.lightbox__imageRef.src =
-        gallery[Number(refs.lightbox__imageRef.dataset.index)].original;
-    }
+    arrowLeft();
   }
   if (event.code === 'ArrowRight') {
-    if (Number(refs.lightbox__imageRef.dataset.index) >= 0) {
-      refs.lightbox__imageRef.dataset.index =
-        Number(refs.lightbox__imageRef.dataset.index) + 1;
-      if (
-        Number(refs.lightbox__imageRef.dataset.index) >
-        refs.galleryRef.lastElementChild.children[0].children[0].dataset.index
-      ) {
-        refs.lightbox__imageRef.dataset.index =
-          refs.galleryRef.firstElementChild.children[0].children[0].dataset.index;
-        refs.lightbox__imageRef.src =
-          gallery[Number(refs.lightbox__imageRef.dataset.index)].original;
-      }
-      refs.lightbox__imageRef.src =
-        gallery[Number(refs.lightbox__imageRef.dataset.index)].original;
-    }
+    arrowRight();
   }
   if (event.code === 'Escape') {
     closeModal();
