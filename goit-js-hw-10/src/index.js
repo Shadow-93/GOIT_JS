@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 import items from './menu-items.hbs';
 import menu from './menu.json';
 import './styles.css';
@@ -26,13 +27,21 @@ const saved = () => {
 
 function checked() {
   if (refs.switch.checked) {
-    refs.body.classList = Theme.DARK;
-    localStorage.setItem('theme', Theme.DARK);
+    dark();
   }
   if (!refs.switch.checked) {
-    refs.body.classList = Theme.LIGHT;
-    localStorage.setItem('theme', Theme.LIGHT);
+    light();
   }
+}
+
+function dark() {
+  refs.body.classList = Theme.DARK;
+  localStorage.setItem('theme', Theme.DARK);
+}
+
+function light() {
+  refs.body.classList = Theme.LIGHT;
+  localStorage.setItem('theme', Theme.LIGHT);
 }
 
 saved();
