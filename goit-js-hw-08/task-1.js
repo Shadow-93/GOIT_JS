@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 import gallery from './gallery.js'; // eslint-disable-line
 
 const refs = {
