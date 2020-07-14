@@ -1,14 +1,15 @@
-// const countTimer = new CountdownTimer({
-//   selector: '#timer-1',
-//   targetDate: new Date('Jan 08, 2021'),
-//   outputTranslation: {
-//     day: 'Days',
-//     hour: 'Hours',
-//     minute: 'Minutes',
-//     second: 'Seconds',
-//   },
-//   outputFormat: '|day|hour|minute|second',
-// });
+// const countTimer = new CountdownTimer(
+//   constructor({
+//     selector: '#timer-1',
+//     outputTranslation: {
+//       day: 'Days',
+//       hour: 'Hours',
+//       minute: 'Minutes',
+//       second: 'Seconds',
+//     },
+//     outputFormat: '|day|hour|minute|second',
+//   }),
+// );
 
 const refs = {
   days: document.querySelector('span[data-value="days"]'),
@@ -28,11 +29,20 @@ const timer = {
   intervalId: null,
   startTime: Date.now(),
   targetDate: new Date('Jan 08, 2021'),
+  selector: '#timer-1',
+  outputTranslation: {
+    day: 'Days',
+    hour: 'Hours',
+    minute: 'Minutes',
+    second: 'Seconds',
+  },
+  outputFormat: '|day|hour|minute|second',
 };
 const deltaTime = timer.targetDate - timer.startTime;
 
-updateClockface(deltaTime.days);
-console.log(deltaTime.days);
+updateClockface(deltaTime);
+
+console.log(deltaTime);
 
 function pad(value) {
   return String(value).padStart(2, '0');
