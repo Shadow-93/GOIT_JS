@@ -1,16 +1,3 @@
-// const countTimer = new CountdownTimer(
-//   constructor({
-//     selector: '#timer-1',
-//     outputTranslation: {
-//       day: 'Days',
-//       hour: 'Hours',
-//       minute: 'Minutes',
-//       second: 'Seconds',
-//     },
-//     outputFormat: '|day|hour|minute|second',
-//   }),
-// );
-
 const refs = {
   days: document.querySelector('span[data-value="days"]'),
   hours: document.querySelector('span[data-value="hours"]'),
@@ -25,53 +12,67 @@ const refs = {
 // container.textContent = 'Hello';
 // refs.body.append(container);
 
-const timer = {
-  intervalId: null,
-  startTime: Date.now(),
-  targetDate: new Date('Jan 08, 2021'),
-  selector: '#timer-1',
-  outputTranslation: {
-    day: 'Days',
-    hour: 'Hours',
-    minute: 'Minutes',
-    second: 'Seconds',
-  },
-  outputFormat: '|day|hour|minute|second',
-};
-const deltaTime = timer.targetDate - timer.startTime;
+// const CountdownTimer = () => ({
+//   selector: '#timer-1',
+//   startTime: Date.now(),
+//   targetDate: new Date('Jan 08, 2021'),
+//   outputTranslation: {
+//     day: 'Days',
+//     hour: 'Hours',
+//     minute: 'Minutes',
+//     second: 'Seconds',
+//   },
+// });
 
-updateClockface(deltaTime);
+// const timer = {
+//   intervalId: null,
+//   startTime: Date.now(),
+//   targetDate: new Date('Jan 08, 2021'),
+//   selector: '#timer-1',
+//   outputTranslation: {
+//     day: 'Days',
+//     hour: 'Hours',
+//     minute: 'Minutes',
+//     second: 'Seconds',
+//   },
+//   outputFormat: '|day|hour|minute|second',
+// };
 
-console.log(deltaTime);
+// const deltaTime = timer.targetDate - timer.startTime;
+
+const currentTime = Date.now();
+const targetTime = new Date('Jan 08, 2021');
+const timer = targetTime - currentTime;
+
+console.log(currentTime);
+
+// setInterval(() => {
+//   console.log(timer);
+// }, 1000);
+
+function countDownTimer(timer) {
+  setInterval(() => {
+    updateClockface(timer);
+  }, 1000);
+}
+
+countDownTimer(timer);
 
 function pad(value) {
   return String(value).padStart(2, '0');
 }
 function updateClockface(time) {
-  /*
-   * Оставшиеся дни: делим значение UTC на 1000 * 60 * 60 * 24, количество
-   * миллисекунд в одном дне (миллисекунды * секунды * минуты * часы)
-   */
   const days = pad(Math.floor(time / (1000 * 60 * 60 * 24)));
+  // refs.days.textContent = days;
 
-  /*
-   * Оставшиеся часы: получаем остаток от предыдущего расчета с помощью оператора
-   * остатка % и делим его на количество миллисекунд в одном часе
-   * (1000 * 60 * 60 = миллисекунды * минуты * секунды)
-   */
   const hours = pad(
     Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
   );
+  // refs.hours.textContent = hours;
 
-  /*
-   * Оставшиеся минуты: получаем оставшиеся минуты и делим их на количество
-   * миллисекунд в одной минуте (1000 * 60 = миллисекунды * секунды)
-   */
   const mins = pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
+  // refs.mins.textContent = mins;
 
-  /*
-   * Оставшиеся секунды: получаем оставшиеся секунды и делим их на количество
-   * миллисекунд в одной секунде (1000)
-   */
   const secs = pad(Math.floor((time % (1000 * 60)) / 1000));
+  // refs.secs.textContent = secs;
 }
