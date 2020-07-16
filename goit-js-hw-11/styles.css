@@ -1,0 +1,28 @@
+.timer {
+    margin:  60px auto 0;
+    width: 800px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.field {
+    margin: 0 auto;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: aquamarine;
+}
+
+.field span {
+    display: block;
+    text-align: center;
+    width: 150px;
+}
+
+.value {
+    font-family: 'Oswald', sans-serif;
+    font-size: 100px;
+}
+
+.label {font-family: 'Do Hyeon', sans-serif;
+font-size: 30px;
+}
