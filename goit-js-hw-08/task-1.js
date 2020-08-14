@@ -55,6 +55,11 @@ function onClick(event) {
   }
 }
 
+const fisrtChild =
+  refs.galleryRef.firstElementChild.children[0].children[0].dataset.index;
+const lastChild =
+  refs.galleryRef.lastElementChild.children[0].children[0].dataset.index;
+
 function arrowRight() {
   if (Number(refs.lightbox__imageRef.dataset.index) >= 0) {
     refs.lightbox__imageRef.dataset.index =
@@ -66,12 +71,8 @@ function arrowRight() {
 }
 
 function toStart() {
-  if (
-    Number(refs.lightbox__imageRef.dataset.index) >
-    refs.galleryRef.lastElementChild.children[0].children[0].dataset.index
-  ) {
-    refs.lightbox__imageRef.dataset.index =
-      refs.galleryRef.firstElementChild.children[0].children[0].dataset.index;
+  if (Number(refs.lightbox__imageRef.dataset.index) > lastChild) {
+    refs.lightbox__imageRef.dataset.index = fisrtChild;
     refs.lightbox__imageRef.src =
       gallery[Number(refs.lightbox__imageRef.dataset.index)].original;
   }
@@ -89,8 +90,7 @@ function arrowLeft() {
 
 function toEnd() {
   if (Number(refs.lightbox__imageRef.dataset.index) < 0) {
-    refs.lightbox__imageRef.dataset.index =
-      refs.galleryRef.lastElementChild.children[0].children[0].dataset.index;
+    refs.lightbox__imageRef.dataset.index = lastChild;
     refs.lightbox__imageRef.src =
       gallery[Number(refs.lightbox__imageRef.dataset.index)].original;
   }
